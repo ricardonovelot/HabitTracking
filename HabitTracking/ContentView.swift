@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@Observable
 class Habits {
     var items = [Habit]()
 }
@@ -14,16 +15,37 @@ class Habits {
 struct ContentView: View {
     
     @State private var ShowAddView = false
-    @State private var habits = Habits()
+    var habits = Habits()
     
     var body: some View {
         NavigationStack {
             List{
                 ForEach(habits.items) { habit in
-                    /*@START_MENU_TOKEN@*/Text(habit.name)/*@END_MENU_TOKEN@*/
+                    NavigationLink(habit.name){
+                        List{
+                            Section("Description"){
+                                Text(habit.description)
+                            }
+                            
+                            Section("Amount") {
+                                HStack {
+                                    Text("\(habit.amount)")
+                                    Spacer()
+                                    Button("Add One More ") {
+                                        // you may like to practice erase this code and try to put it again
+                                        if let index = habits.items.firstIndex(of: habit) {
+                                            habits.items[index].amount += 1
+                                        }
+                                    }
+                                }
+                            }
+                            
+                        }
+                        .navigationTitle(habit.name)
+                    }
                 }
             }
-            .navigationBarTitle("Habits")
+            .navigationTitle("Habits")
             .toolbar {
                 Button("Add"){
                     ShowAddView = true
@@ -33,7 +55,6 @@ struct ContentView: View {
         .sheet(isPresented: $ShowAddView, content: {
             AddView(habits: habits)
         })
-
 
     }
 }
