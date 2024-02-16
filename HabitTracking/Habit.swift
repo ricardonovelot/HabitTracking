@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct Habit: Identifiable,Equatable {
+struct Habit: Codable,Identifiable,Equatable {
     var id = UUID()
     var name: String
+    var emoji: String
     var description: String
     var amount: Int
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct AddView: View {
     @State private var name = ""
     @State private var description = ""
+    @State private var emoji = ""
     @Environment (\.dismiss) var dismiss
     
     var habits: Habits
@@ -17,8 +18,14 @@ struct AddView: View {
     var body: some View {
         NavigationView{
             Form {
-                Section {
-                    TextField("Habit Name", text: $name)
+                Section{
+                    EmojiTextField(text: $emoji, placeholder: "Emoji 😁")
+                        .fixedSize(horizontal: true, vertical: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                }
+                        
+                
+                Section{
+                    TextField("Name", text: $name)
                     TextField("Description", text: $description, axis: .vertical)
                         .lineLimit(3...)
                 }
@@ -36,13 +43,13 @@ struct AddView: View {
                     }.disabled(name.isEmpty)
                 }
             }
-            .navigationTitle("New Habit")
+            .navigationTitle(name.isEmpty ? "New Habit": "\(emoji) \(name)")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
     
     func AddItem(){
-        habits.items.append(Habit(name: name, description: description, amount: 0))
+        habits.items.append(Habit(name: name, emoji:emoji, description: description, amount: 0))
         print("Item Added")
         dismiss()
     }
