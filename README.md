@@ -1,4 +1,4 @@
-# HabitTracking App - SwiftUI Day 47 Challenge
+# HabitTracking App
 
 <table>
 <tr>
@@ -14,11 +14,9 @@ The HabitTracking app, is a SwiftUI application aimed at facilitating users to t
 - **Habit Tracking:** Keep track of daily habits and increment habit counters as they are performed.
 - **Habit List Overview:** View all added habits in a list, each represented with a custom emoji and title.
 - **Detailed Habit Insights:** Select a habit to view its description and track how many times it has been completed.
-- **Persistence:** Utilizes `Codable` and `UserDefaults` for saving and loading habit data, ensuring that users' progress is retained across sessions.
 
-### Learning Experience
+### Technical Highlights
 
-Developing this app provides insights into advanced SwiftUI concepts, including:
 - Managing state and environment objects to track user input across views.
 - Utilizing `Codable` for data persistence with `UserDefaults`.
 
