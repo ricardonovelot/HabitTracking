@@ -1,4 +1,4 @@
-# HabitTracking App
+# HabitTracking
 
 <table>
 <tr>
@@ -6,7 +6,7 @@
 
 ## About the Project
 
-The HabitTracking app, is a SwiftUI application aimed at facilitating users to track and maintain their daily habits. It's a tool for setting personal goals, tracking progress, and encourage positive habit formation.
+HabitTracking it's a tool for setting personal goals, tracking progress, and encourage positive habit formation.
 
 ### Features
 
